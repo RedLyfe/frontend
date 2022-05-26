@@ -13,22 +13,28 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/myapp")
+@RequestMapping("/products")
 public class DepartmentController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/countries")
+    @GetMapping()
     public String getCountries(Model model){
-        String url = "https://jsonplaceholder.typicode.com/posts";
+
+        //http://api:3000/externalrestapi/testresource
+        //String url = ""
+        String url = "http://api:8082/items"; //För att kommunicera med docker
+       // String url = "http://localhost:8082/items"; //Kommunicera via intellij
         Post[] post = restTemplate.getForObject(url, Post[].class);
 
         System.out.println(post);
-        List <String> titlar = Arrays.stream(post).map(Post::getTitle).toList();
+        List <String> titlar = Arrays.stream(post).map(Post::getName).toList();
         System.out.println(titlar);
 
         String giveMeText = titlar.get(0);
+        String giveMeText1 = titlar.get(1);
+        String giveMeText2 = titlar.get(2);
 
         model.addAttribute("title", giveMeText);
         return "index";

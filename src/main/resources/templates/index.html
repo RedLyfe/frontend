@@ -3,29 +3,50 @@
 <head>
     <title>Thymeleaf Variables</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
 </head>
 <body>
 <main>
+    <h1>A Fancy Table</h1>
 
-    <table class="table table-dark">
-        <thead>
+    <table id="customers">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Cost</th>
         </tr>
-        </thead>
-        <tbody>
         <tr>
-            <th scope="row">1</th>
+            <td>1</td>
             <td th:text="${title}"></td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>2000kr</td>
         </tr>
 
-        </tbody>
     </table>
 </main>
+
 </body>
 </html>
